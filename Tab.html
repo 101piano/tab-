@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Tab切换</title>
+    <style>
+      ul,li {
+        margin: 0;
+        padding: 0;
+      }
+      li {
+        list-style: none;
+      }
+      .clearfix::after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+      #wrap {
+        width: 600px;
+        margin: 50px auto;
+        border: 1px solid #ccc;
+      }
+      .tab-head {
+        box-sizing: border-box;
+        width: 580px;
+        margin: 10px 10px 0 10px;
+        border: 1px solid #ccc;
+      }
+      .tab-head>li {
+        float: left;
+        box-sizing: border-box;
+        width: 33.33%;
+        border-left: 1px solid #ccc;
+        text-align: center;
+        padding: 10px;
+      }
+      .tab-head>li:first-child {
+        border-left: none;
+      }
+      .tab-head .active {
+        background-color: #eee;
+        cursor: pointer;
+      }
+      .tab-text {
+        box-sizing: border-box;
+        width: 580px;
+        margin: 0 10px 10px 10px;
+        border: 1px solid #ccc;
+        border-top: none;
+        padding: 20px;
+      }
+      .tab-text>li {
+        display: none;
+      }
+      .tab-text>li.active {
+       display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrap">
+      <ul class="tab-head clearfix">
+        <li class="active">tab1</li>
+        <li>tab2</li>
+        <li>tab3</li>
+      </ul>
+      <ul class="tab-text">
+        <li class="active">内容1</li>
+        <li>内容2</li>
+        <li>内容3</li>
+      </ul>
+    </div>
+    
+    <script>
+      var tabHead=$$(".tab-head")[0];
+      var tabText=$$(".tab-text")[0];
+      var headLi=$$(".tab-head>li");
+      var textLi=$$(".tab-text>li");
+    
+      tabHead.addEventListener("click",function(e){
+        if(e.target.tagName.toLowerCase()==="li"){
+          for(var i=0;i<headLi.length;i++){
+            headLi[i].classList.remove("active");
+          }
+          e.target.classList.add("active");
+          
+          var index=[].indexOf.call(headLi,e.target);
+          for(var i=0;i<textLi.length;i++){
+            textLi[i].classList.remove("active");
+          }
+          textLi[index].classList.add("active");
+        }          
+      });
+    
+      function $(id){
+        return document.querySelector(id);
+      }
+      function $$(cls){
+        return document.querySelectorAll(cls);
+      }
+    </script>
+
+  
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
